@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiberMusic">
-        <activity android:name=".Canciones"></activity>
+        <activity android:name=".ConsultaCanciones"></activity>
+        <activity android:name=".Canciones" />
         <activity android:name=".Registrar" />
         <activity android:name=".MainActivity">
             <intent-filter>
