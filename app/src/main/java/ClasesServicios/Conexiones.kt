@@ -1,7 +1,5 @@
 package com.example.libermusic
-import ClasesServicios.DatosRespuestaUsuario
-import ClasesServicios.UsuarioRegistrar
-import ClasesServicios.usuarioLogin
+import ClasesServicios.*
 import org.json.JSONObject
 import retrofit2.*;
 import retrofit2.http.Body
@@ -11,11 +9,12 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 public interface Conexiones {
-    @GET(value = "posts/")
-    fun RegresarUsuario(): Call<DatosRespuestaUsuario>
-   @POST(value = "posts")
-   fun Login(usuarioMandar:usuarioLogin,@Body usuarioMan: usuarioLogin): Call<DatosRespuestaUsuario>
 
+    @POST("LoginApi/doLogin")
+    fun hacerLogin(@Body usuario:usuarioLogin?):Call<RespuestaLogin>
+
+    @POST("Registrar/RegistrarUsuario")
+    fun RegistrarUsuario(@Body usuario:UsuarioRegistrar?):Call<RespuestaUsuarioRegistro>
 
 
 

@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import ClasesServicios.*
+import android.content.RestrictionEntry
 import android.util.Log
 import com.google.gson.Gson
 import retrofit2.Call
@@ -38,14 +39,50 @@ class MainActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.txtpasword)
         val btnLogin = findViewById<Button>(R.id.btnlogin)
         val btnRegistro = findViewById<Button>(R.id.btnRegistrarse)
+        var usuarioencontrado:RespuestaLogin?
 
 
         btnLogin.setOnClickListener() {
+            var usuarioMandar: usuarioLogin = usuarioLogin()
+            usuarioMandar.NombreDeUsuario = txtusername.text.toString()
+            var contrasena:ContrasenaMandar = ContrasenaMandar()
+            contrasena.contrasena1 = password.text.toString()
+            usuarioMandar.contrasena = contrasena
+
+            val conexiones:Conexiones = Servicios.getRestEngine().create(Conexiones::class.java)
+            val result:Call<RespuestaLogin> = conexiones.hacerLogin(usuarioMandar)
+            result.enqueue(object : Callback<RespuestaLogin>{
+                override fun onFailure(call: Call<RespuestaLogin>, t: Throwable) {
+                    Toast.makeText(this@MainActivity,"Algo pasó",Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(
+                    call: Call<RespuestaLogin>,
+                    response: Response<RespuestaLogin>
+                ) {
+                    usuarioencontrado = response?.body()
+                    Toast.makeText(this@MainActivity,"Bienvenido al himalaya "+ usuarioencontrado?.datos?.usuario?.nombreDeUsuario,Toast.LENGTH_SHORT).show()
+                    val ventanaCanciones:Intent = Intent(applicationContext,Canciones::class.java)
+                    startActivity(ventanaCanciones)
+
+
+                }
+
+            })
+
+
+
 
 
 
 
         }
+
+
+
+
+
+
 
         btnRegistro.setOnClickListener(){
 
