@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registrar"
-    android:background="@color/Background">
+    android:background="@color/Background"
+    tools:context=".Registrar">
 
     <TextView
         android:id="@+id/textView12"
@@ -119,7 +120,7 @@
         app:layout_constraintVertical_bias="0.061" />
 
     <Button
-        android:id="@+id/btnlogin3"
+        android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
@@ -132,7 +133,7 @@
         app:layout_constraintVertical_bias="0.101" />
 
     <Button
-        android:id="@+id/btnlogin2"
+        android:id="@+id/btnRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="156dp"
@@ -146,7 +147,7 @@
         app:layout_constraintVertical_bias="0.101" />
 
     <EditText
-        android:id="@+id/txtpasword2"
+        android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -161,7 +162,7 @@
         app:layout_constraintVertical_bias="0.574" />
 
     <EditText
-        android:id="@+id/txtpasword3"
+        android:id="@+id/txtPassworsRepite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -176,7 +177,7 @@
         app:layout_constraintVertical_bias="0.65" />
 
     <EditText
-        android:id="@+id/txtUsername4"
+        android:id="@+id/txtUsernameRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -191,7 +192,7 @@
         app:layout_constraintVertical_bias="0.405" />
 
     <EditText
-        android:id="@+id/txtUsername5"
+        android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -206,7 +207,7 @@
         app:layout_constraintVertical_bias="0.485" />
 
     <EditText
-        android:id="@+id/txtUsername3"
+        android:id="@+id/txtPais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -221,7 +222,7 @@
         app:layout_constraintVertical_bias="0.33" />
 
     <EditText
-        android:id="@+id/txtUsername2"
+        android:id="@+id/txtnombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
