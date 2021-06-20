@@ -18,6 +18,15 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import ClasesServicios.*
+import android.util.Log
+import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,11 +38,38 @@ class MainActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.txtpasword)
         val btnLogin = findViewById<Button>(R.id.btnlogin)
 
+
         btnLogin.setOnClickListener {
 
-            //btnLoginTask().execute(txtusername.text.toString(), password.text.toString())
+
+            var contrasenamandar: ContrasenaMandar = ContrasenaMandar()
+            contrasenamandar.contrasena1 = password.text.toString()
+            var usuarioLogin: usuarioLogin = usuarioLogin()
+            usuarioLogin.contrasena = contrasenamandar
+            usuarioLogin.NombreDeUsuario = txtusername.text.toString()
+
+            val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl("http://4a15f1f9503f.ngrok.io/LoginApi/doLogin")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val service = retrofit.create<Conexiones>(Conexiones::class.java)
+
+            service.Login(usuarioLogin, usuarioLogin)
+                .enqueue(object : Callback<DatosRespuestaUsuario> {
+                    override fun onResponse(
+                        call: Call<DatosRespuestaUsuario>?,
+                        response: Response<DatosRespuestaUsuario>?
+
+                    ) {
+                        val post = response?.body()
+
+                    }
+
+                    override fun onFailure(call: Call<DatosRespuestaUsuario>?, t: Throwable?) {
+                        t?.printStackTrace()
+                    }
+                })
+
         }
-
     }
-
 }
