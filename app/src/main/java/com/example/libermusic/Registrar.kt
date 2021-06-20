@@ -1,5 +1,6 @@
 package com.example.libermusic
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -28,7 +29,8 @@ class Registrar : AppCompatActivity() {
 
         btnRegresar.setOnClickListener {
 
-            //btnLoginTask().execute(txtusername.text.toString(), password.text.toString())
+            val ventanaLogin: Intent = Intent(applicationContext,MainActivity::class.java)
+            startActivity(ventanaLogin)
         }
 
 

@@ -37,38 +37,20 @@ class MainActivity : AppCompatActivity() {
         val txtusername = findViewById<EditText>(R.id.txtUsername)
         val password = findViewById<EditText>(R.id.txtpasword)
         val btnLogin = findViewById<Button>(R.id.btnlogin)
+        val btnRegistro = findViewById<Button>(R.id.btnRegistrarse)
 
 
-        btnLogin.setOnClickListener {
+        btnLogin.setOnClickListener() {
 
 
-            var contrasenamandar: ContrasenaMandar = ContrasenaMandar()
-            contrasenamandar.contrasena1 = password.text.toString()
-            var usuarioLogin: usuarioLogin = usuarioLogin()
-            usuarioLogin.contrasena = contrasenamandar
-            usuarioLogin.NombreDeUsuario = txtusername.text.toString()
 
-            val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("http://4a15f1f9503f.ngrok.io/LoginApi/doLogin")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-            val service = retrofit.create<Conexiones>(Conexiones::class.java)
 
-            service.Login(usuarioLogin, usuarioLogin)
-                .enqueue(object : Callback<DatosRespuestaUsuario> {
-                    override fun onResponse(
-                        call: Call<DatosRespuestaUsuario>?,
-                        response: Response<DatosRespuestaUsuario>?
+        }
 
-                    ) {
-                        val post = response?.body()
+        btnRegistro.setOnClickListener(){
 
-                    }
-
-                    override fun onFailure(call: Call<DatosRespuestaUsuario>?, t: Throwable?) {
-                        t?.printStackTrace()
-                    }
-                })
+            val ventanaResgistro:Intent = Intent(applicationContext,Registrar::class.java)
+            startActivity(ventanaResgistro)
 
         }
     }
